@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-#importing dataset 
 df=pd.read_csv(r'C:\Users\Dell\Downloads\Online Retail.csv')
-
 #printing first dew rows of the dataset
 print(" \n FIRST 10NROWS OF THE DATA SET ARE: \n",df.head(10))
 
@@ -27,4 +25,14 @@ print("Dropping rows with missing customerID \n",rows_dropped)
 values=df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
 print("Handling negative or zero Quantities or prices \n",values)
 
+#Filtering out rows where Quantity or unitprice is less than zero
+Filtered_value = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
+print("Rows where Quantity or unitprice is less than zero: \n",Filtered_value)
 
+#Converting InvoiceDate to datetime format
+df['InvoiceDate']=pd.to_datetime(df['InvoiceDate'])
+print("InvoiceDate to datetime format :\n",df['InvoiceDate'])
+
+#Creating TotalPrice Column
+df['TotalPrice']=df['Quantity']*df['UnitPrice']
+print("TotalPrice : \n",df['TotalPrice'])

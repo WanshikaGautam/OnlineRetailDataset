@@ -242,8 +242,27 @@ plt.show()
 
 # Proportion of Orders from Top 5 Countries 
 plt.figure(figsize=(7, 7))
-top5_orders.plot(kind='pie', autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
-plt.title("Order Proportion: Top 5 Countries")
+wedges, texts, autotexts = plt.pie(
+    top5_orders,
+    labels=top5_orders.index,
+    autopct='%1.1f%%',
+    startangle=140,
+    colors=sns.color_palette('pastel'),
+    wedgeprops={'edgecolor': 'black', 'linewidth': 1},
+    textprops={'fontsize': 12},
+    shadow=True
+)
+
+# Improve label aesthetics
+for text in texts:
+    text.set_fontsize(12)
+    text.set_fontweight('bold')
+for autotext in autotexts:
+    autotext.set_color('black')
+    autotext.set_fontsize(11)
+
+# Title & Layout
+plt.title("Order Proportion: Top 5 Countries", fontsize=16, fontweight='bold', pad=20)
 plt.ylabel("")
 plt.tight_layout()
 plt.show()

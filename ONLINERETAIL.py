@@ -115,8 +115,6 @@ plt.subplot(1, 2, 2)
 sns.boxplot(data=cleaned_df[['Quantity', 'UnitPrice']], palette="Set3")
 plt.title('After Outlier Removal', fontsize=14)
 plt.grid(True)
-plt.xscale('log')
-plt.yscale('log')
 plt.tight_layout()
 plt.show()
 
@@ -201,21 +199,18 @@ plt.xlabel("Hour of Day")
 plt.ylabel("Number of Transactions")
 plt.show()
 
-# Bar plot: Top 10 countries by revenue
-country_revenue.head(10).plot(kind='bar', title="Top 10 Countries by Revenue", color='green', figsize=(10, 4))
-plt.ylabel("Revenue")
-plt.show()
-
 # Bar plot: Top 10 countries by transaction count
 country_transactions.head(10).plot(kind='bar', title="Top 10 Countries by Transaction Count", color='purple', figsize=(10, 4))
 plt.ylabel("Transactions")
 plt.show()
 
 # Plot hourly sales
-hourly_sales.plot(kind='bar', title="Sales by Hour of Day", color='darkred', figsize=(10, 4))
+
+hourly_sales.plot(kind='bar', title="Sales by Hour of Day", color='crimson', figsize=(10, 4))
 plt.ylabel("Total Revenue")
 plt.xlabel("Hour of Day")
 plt.show()
+
 
 # Customer Purchase Distribution
 plt.figure(figsize=(10, 5))
@@ -229,7 +224,7 @@ plt.show()
 
 #Hour vs Day of Week Sales 
 plt.figure(figsize=(14, 6))
-sns.heatmap(heatmap_data, cmap='YlGnBu', linewidths=0.3, annot=False)
+sns.heatmap(heatmap_data, cmap='YlGnBu', linewidths=0.3, annot=True)
 plt.title("Sales Heatmap: Hour of Day vs Day of Week", fontsize=16)
 plt.xlabel("Hour of Day")
 plt.ylabel("Day of Week")
@@ -237,7 +232,7 @@ plt.tight_layout()
 plt.show()
 #Histogram: Distribution of Order Quantities
 plt.figure(figsize=(10, 5))
-sns.histplot(df['Quantity'], bins=100, kde=False, color='dodgerblue')
+sns.histplot(df['Quantity'], bins=100, kde=True, color='dodgerblue')
 plt.xlim(-20, 100)  # limit x-axis to reduce skew from extreme outliers
 plt.title("Distribution of Order Quantities")
 plt.xlabel("Quantity")
